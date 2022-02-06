@@ -1,7 +1,7 @@
 package com.company;
 import java.sql.*;
 import java.util.Random;
-public class Generate_Account_Passwd {
+public class Generate_Account_Passwd extends ChangePassword{
     public static String DisplayAccount() {
         String str = null;
         try {

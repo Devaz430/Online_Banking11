@@ -18,10 +18,12 @@ public class BasicDetails extends Generate_Account_Passwd {
            ValidateEmail obj = new ValidateEmail();//imported package
            String Fname;
 
-           do {   //stops receiving null values for Lname
+           do {   //stops receiving null values for Fname
 
-               System.out.println("Your First Name: ");
+               System.out.println("Your First Name:");
                Fname = input.nextLine();
+               if(Fname.isEmpty())
+                   System.out.println("Null value is not allowed!");
                if(Fname.length()>20) {  //20 is the given size in database
                    throw new TooManyInput("Maximum is 20 characters");
                }
@@ -33,7 +35,8 @@ public class BasicDetails extends Generate_Account_Passwd {
            do {     //stops receiving null values for Lname
                System.out.println("Your Last Name: ");
                Lname = input.nextLine();
-
+               if(Lname.isEmpty())
+                   System.out.println("Null value is not allowed!");
                if(Lname.length()>20) {   //20 is the given size in database
                    throw new TooManyInput("Maximum is 20 characters");
                }
@@ -43,6 +46,7 @@ public class BasicDetails extends Generate_Account_Passwd {
 
            String email = new String(obj.cl());//email verification
            System.out.println("Your Account ID: " + DisplayAccount());
+           System.out.println("\nSave your account Id and Password to login!!!!");
            String s = new String(DisplayAccount());
            System.out.println("Your Password: " + DisplayPasswd());
            int p = DisplayPasswd();
@@ -53,7 +57,7 @@ public class BasicDetails extends Generate_Account_Passwd {
            System.out.println("Your Street Number: ");
            String streetno = input.next();
            statement.executeUpdate("insert into USER_INFO value('" + FNAME + "','" + LNAME + "','" + email + "','" + s + "','" + p + "','" + phoneno + "','" + streetno + "')");
-           System.out.println("Value inserted successfully!!");
+           System.out.println("You have registered successfully!!");
        }
         catch(ClassNotFoundException e){
             e.printStackTrace();
